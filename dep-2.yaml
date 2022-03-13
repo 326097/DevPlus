@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-mongo-page-hit
+  namespace: frescons
+  labels:
+    app: node-mongo-page-hit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-mongo-page-hit
+  template:      
+    metadata:
+      labels:
+        app: node-mongo-page-hit
+    spec:
+      containers:
+         - name: node-mongo-page-hit
+           image: nginx
+           imagePullPolicy: Never
+           ports:
+             - containerPort: 8000
+           env:
+             - name: PORT
+               value: "8000"
+
+
+
+           
